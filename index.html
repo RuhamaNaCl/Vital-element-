@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="bn">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -53,6 +53,31 @@
       font-size: 0.9rem;
       color: #777;
     }
+    .quiz-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin-top: 2rem;
+    }
+    .quiz-question {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+    }
+    .quiz-option {
+      background-color: #28a745;
+      color: white;
+      padding: 0.7rem 1.5rem;
+      border: none;
+      border-radius: 999px;
+      margin-bottom: 1rem;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: background-color 0.3s;
+    }
+    .quiz-option:hover {
+      background-color: #218838;
+    }
   </style>
 </head>
 <body>
@@ -65,7 +90,19 @@
 
   <div class="container hidden" id="quizBox">
     <h2>Answer a Few Quick Questions</h2>
-    <p>We’ll generate a report tailored to you!</p>
+    <div class="quiz-container">
+      <div id="quizQuestion1" class="quiz-question">What is your favorite color?</div>
+      <button class="quiz-option" onclick="nextQuestion(2)">Red</button>
+      <button class="quiz-option" onclick="nextQuestion(2)">Blue</button>
+      <button class="quiz-option" onclick="nextQuestion(2)">Green</button>
+      <button class="quiz-option" onclick="nextQuestion(2)">Yellow</button>
+    </div>
+    <footer>Made by Ruhama | Vital Test by Ruhama</footer>
+  </div>
+
+  <div class="container hidden" id="resultBox">
+    <h2>Your Personalized Result</h2>
+    <p>Thank you for taking the quiz! Based on your answers, we will give you an insight soon.</p>
     <footer>Made by Ruhama | Vital Test by Ruhama</footer>
   </div>
 
@@ -74,6 +111,19 @@
       document.getElementById("mainBox").classList.add("hidden");
       document.getElementById("quizBox").classList.remove("hidden");
     }
+
+    function nextQuestion(questionNumber) {
+      if (questionNumber === 2) {
+        document.getElementById("quizQuestion1").innerHTML = "What is your favorite food?";
+        document.querySelectorAll(".quiz-option")[0].innerHTML = "Pizza";
+        document.querySelectorAll(".quiz-option")[1].innerHTML = "Burger";
+        document.querySelectorAll(".quiz-option")[2].innerHTML = "Pasta";
+        document.querySelectorAll(".quiz-option")[3].innerHTML = "Sushi";
+      } else {
+        document.getElementById("quizBox").classList.add("hidden");
+        document.getElementById("resultBox").classList.remove("hidden");
+      }
+    }
   </script>
 </body>
-</html>
+                                                                    </html>
